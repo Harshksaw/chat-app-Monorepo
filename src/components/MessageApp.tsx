@@ -1,18 +1,43 @@
+'use client'
+import { useEffect, useState } from "react";
+import Sidebar from "./Sidebar";
+import axios from "axios";
 
 function MessageApp() {
     const [messages, setMessages] = useState([]);
     const [selectedConversation, setSelectedConversation] = useState(null);
     const [selectedUser, setSelectedUser] = useState(null); // New state for selected user
-  
+    const [selectedPlatform, setSelectedPlatform] = useState(null);
+    // const [isClient, setIsClient] = useState(false);
+    // useEffect(() => {
+    //   setIsClient(true);
+    // }, []);
     useEffect(() => {
-      // Fetch messages (replace with your actual data fetching logic)
-      const fetchMessages = async () => {
-        const response = await fetch('/api/messages'); // Or your dummy JSON data
-        const data = await response.json();
-        setMessages(data);
-      };
-      fetchMessages();
+      if (true) {
+        const fetchMessages = async () => {
+          const response = await axios.get('/api/messages');
+          console.log("🚀 ~ fetchMessages ~ response:", response)
+          const data = await response.data;
+          console.log("🚀 ~ fetchMessages ~ data:", data)
+          setMessages(data);
+        };
+        fetchMessages();
+      }
     }, []);
+  
+    const handlePlatformSelect = (platform) => {
+      setSelectedPlatform(platform);
+      setSelectedConversation(null);
+      setSelectedUser(null);
+  
+      // Fetch data for the selected platform
+      fetch(`/api/messages?platform=${platform}`) 
+        .then(res => res.json())
+        .then(data => {
+          // Update state with the fetched data
+          setMessages(data); 
+        });
+    };
   
     const handleConversationSelect = (conversation) => {
       setSelectedConversation(conversation);
@@ -43,6 +68,15 @@ function MessageApp() {
     return (
       <div className="message-app">
         <h2>Message App</h2>
+        <Sidebar
+
+         onSelectConversation={handleConversationSelect}
+         onSelectUser={handleUserSelect}
+         onSelectPlatform={handlePlatformSelect}
+         conversations={messages}
+        //  users={messages}
+         platforms={messages}
+      />
         {/* <Sidebar
           conversations={messages}
           onSelectConversation={handleConversationSelect}

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const ruthligos = localFont({
   src: [
     {
-      path: "./fonts/ruthligos-sillentin.ttf",
+      path: "../../public/fonts/ruthligos-sillentin.ttf",
       weight: "400",
       style: "normal",
     },
@@ -33,13 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-        </style>
-      </head>
+    <html lang="en" suppressHydrationWarning={true}>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable}  ${ruthligos.variable}   font-sans antialiased`}
       >
