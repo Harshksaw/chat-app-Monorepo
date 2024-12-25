@@ -1,6 +1,6 @@
 // app/messages/[platform]/page.tsx 
-import { notFound } from 'next/navigation';
-import platform from '../../../../node_modules/axios/lib/helpers/cookies';
+
+// import { useState } from "react";
 
 interface PageProps {
   params: {
@@ -11,7 +11,7 @@ interface PageProps {
 export default function MessagePage({ params }: PageProps) {
   const {  message: platform } = params;
   console.log("🚀 ~ MessagePage ~ platform:", platform)
-
+  // const [selectedUserId, setSelectedUserId] = useState("");
 
   const platformUsers = {
     twitter: [
@@ -39,36 +39,43 @@ export default function MessagePage({ params }: PageProps) {
   const users = platformUsers[platform];
 
   return (
-    <div>
-      <h1>{platform} Users</h1>
-      <ul>
+    <div className="h-full w-full bg-green-300">
+      <div className="w-1/3 h-full bg-red-400">
+
+      <ul className="space-y-4 p-4">
         {users.map((user) => (
-          <li key={user.id}>
-            {/* Render user information based on the platform */}
-            {platform === 'twitter' && (
-              <div>
-                <p>{user.name} ({user.username})</p>
-              </div>
-            )}
-            {platform === 'linkedin' && (
-              <div>
-                <p>{user.name} - {user.title}</p>
-              </div>
-            )}
-            {platform === 'facebook' && (
-              <div>
-                {/* <img src={user.profilePicture} alt={user.name} /> */}
-                <p>{user.name}</p>
-              </div>
-            )}
-            {platform === 'instagram' && (
-              <div>
-                <p>{user.name} ({user.username})</p>
-              </div>
-            )}
+          <li key={user.id} className="p-4 border rounded-lg shadow-md bg-slate-700"
+          // onClick={() => {
+          //   setSelectedUserId(user.id);
+          // }}
+          >
+
+        {platform === 'twitter' && (
+          <div>
+            <p>{user.name} ({user.username})</p>
+          </div>
+        )}
+        {platform === 'linkedin' && (
+          <div>
+            <p>{user.name} - {user.title}</p>
+          </div>
+        )}
+        {platform === 'facebook' && (
+          <div>
+            {/* <img src={user.profilePicture} alt={user.name} /> */}
+            <p>{user.name}</p>
+          </div>
+        )}
+        {platform === 'instagram' && (
+          <div>
+            <p>{user.name} ({user.username})</p>
+          </div>
+        )}
           </li>
         ))}
       </ul>
+      </div>
+
     </div>
   );
 }
