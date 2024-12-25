@@ -1,17 +1,19 @@
 // app/messages/[platform]/page.tsx 
-
-// import { useState } from "react";
-
+'use client'
+import ChatConversation from "@/components/ChatUi";
+import { useState } from "react";
+import { use } from 'react';  
 interface PageProps {
   params: {
     platform: string; 
   };
 }
 
-export default function MessagePage({ params }: PageProps) {
-  const {  message: platform } = params;
+export default  function MessagePage({ params }: PageProps) {
+  const {  message: platform } =  use(params);;
   console.log("🚀 ~ MessagePage ~ platform:", platform)
-  // const [selectedUserId, setSelectedUserId] = useState("");
+  const [selectedUserId, setSelectedUserId] = useState("");
+  console.log("🚀 ~ MessagePage ~ selectedUserId:", selectedUserId)
 
   const platformUsers = {
     twitter: [
@@ -36,18 +38,18 @@ export default function MessagePage({ params }: PageProps) {
   //   notFound();
   // }
 
-  const users = platformUsers[platform];
+  const users = platformUsers[platform] || [];
 
   return (
-    <div className="h-full w-full bg-green-300">
+    <div className="h-full w-full bg-green-300 flex">
       <div className="w-1/3 h-full bg-red-400">
 
       <ul className="space-y-4 p-4">
         {users.map((user) => (
           <li key={user.id} className="p-4 border rounded-lg shadow-md bg-slate-700"
-          // onClick={() => {
-          //   setSelectedUserId(user.id);
-          // }}
+          onClick={() => {
+            setSelectedUserId(user.id);
+          }}
           >
 
         {platform === 'twitter' && (
@@ -75,6 +77,18 @@ export default function MessagePage({ params }: PageProps) {
         ))}
       </ul>
       </div>
+
+      <div className="w-2/3 h-full bg-green-500">
+      <ChatConversation userId={selectedUserId}
+      
+      />
+        {/* {selectedUserId && (
+          <div className="p-4">
+            <h2 className="text-2xl font-bold">Messages</h2>
+            <p>Selected user ID: {selectedUserId}</p>
+          </div>
+        )} */}
+        </div>
 
     </div>
   );
