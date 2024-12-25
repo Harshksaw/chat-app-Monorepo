@@ -67,7 +67,7 @@ function MessageApp() {
   
     return (
       <div className="message-app">
-        <h2>Message App</h2>
+
         <Sidebar
 
          onSelectConversation={handleConversationSelect}

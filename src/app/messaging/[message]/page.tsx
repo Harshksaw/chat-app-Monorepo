@@ -1,6 +1,7 @@
 // app/messages/[platform]/page.tsx 
 'use client'
 import ChatConversation from "@/components/ChatUi";
+import UserCard from "@/components/UserCard";
 import { useState } from "react";
 import { use } from 'react';  
 interface PageProps {
@@ -17,8 +18,10 @@ export default  function MessagePage({ params }: PageProps) {
 
   const platformUsers = {
     twitter: [
-      { id: 1, name: 'Alice', username: '@alice123' },
-      { id: 2, name: 'Bob', username: '@bob456' },
+      { id: 1, name: 'Alice', username: '@alice123', text:'helloe leloeo leoeo' },
+      { id: 2, name: 'Bob', username: '@bob456', text:'helloe leloeoewwe wewewdcs leoeo'  },
+      { id: 3, name: 'Bo3b', username: '@bobew456', text:'helloe leloeoweewwe wewewdcs leoeo'  },
+      { id: 4, name: 'B2ob', username: '@boweb456', text:'helloe leloeoewweewwe wewewdcs leoeo'  },
     ],
     linkedin: [
       { id: 3, name: 'Charlie', title: 'Software Engineer' },
@@ -41,37 +44,34 @@ export default  function MessagePage({ params }: PageProps) {
   const users = platformUsers[platform] || [];
 
   return (
-    <div className="h-full w-full bg-green-300 flex">
-      <div className="w-1/3 h-full bg-red-400">
+    <div className="h-full w-full bg-green-300 flex border-[#229799] border-l">
+      <div className="w-1/3 h-full bg-[#1E1E1E]">
 
-      <ul className="space-y-4 p-4">
+      <h3 className="text-white font-bold text-3xl m-8">
+        Messages
+      </h3>
+
+      <ul className=" p-0">
         {users.map((user) => (
-          <li key={user.id} className="p-4 border rounded-lg shadow-md bg-slate-700"
+          <li key={user.id} className="p-0 border-b border-[#326C6D]   rounded-sm shadow-md bg-inherit text-white"
           onClick={() => {
             setSelectedUserId(user.id);
           }}
           >
 
         {platform === 'twitter' && (
-          <div>
-            <p>{user.name} ({user.username})</p>
-          </div>
+          // <div>
+            <UserCard data={user}/>
+          // </div>
         )}
         {platform === 'linkedin' && (
-          <div>
-            <p>{user.name} - {user.title}</p>
-          </div>
+          <UserCard data={user}/>
         )}
         {platform === 'facebook' && (
-          <div>
-            {/* <img src={user.profilePicture} alt={user.name} /> */}
-            <p>{user.name}</p>
-          </div>
+   <UserCard data={user}/>
         )}
         {platform === 'instagram' && (
-          <div>
-            <p>{user.name} ({user.username})</p>
-          </div>
+     <UserCard data={user}/>
         )}
           </li>
         ))}

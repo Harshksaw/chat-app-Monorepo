@@ -22,8 +22,8 @@ function SocialMediaSidebar({ onPlatformSelect }) {
   };
 
   return (
-    <div className="  border-l border-r  border-green-500 sidebar w-20 bg-gray-900 text-white h-full">
-      <div className="space-y-4 w-20 bg-gray-800 text-white p-4 h-full pt-32 gap-10">
+    <div className="  border-l   border-[#229799]  sidebar w-20 bg-gray-900 text-white h-full">
+      <div className="space-y-4 w-20 bg-[#1E1E1E] text-white p-4 h-full pt-32 gap-10">
         {platforms.map((platform) => (
           <div
             key={platform.name}
