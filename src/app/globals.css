@@ -38,3 +38,10 @@ h2 {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white;
 }
+
+.montserrat-font {
+  font-family: "Montserrat", serif;
+  /* font-optical-sizing: auto; */
+  font-weight: 500;
+  font-style: normal;
+}

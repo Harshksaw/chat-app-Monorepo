@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { localFont } from 'next/font/local';
+import { localFont } from "next/font/local";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 const ruthligos = localFont({
   src: [
     {
-      path: './fonts/ruthligos-sillentin.ttf', 
-      weight: '400',
-      style: 'normal',
+      path: "./fonts/ruthligos-sillentin.ttf",
+      weight: "400",
+      style: "normal",
     },
   ],
-  variable: '--font-ruthligos',
+  variable: "--font-ruthligos",
 });
 export default function RootLayout({
   children,
@@ -35,9 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        </style>
       </head>
       <body
-         className={`${geistSans.variable} ${geistMono.variable}  ${ruthligos.variable}   font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}  ${ruthligos.variable}   font-sans antialiased`}
       >
         {children}
       </body>
