@@ -32,19 +32,19 @@ export default function ChatConversation({ userId }: any) {
     },
     {
       id: 3,
-      text: "Thank you so much! My audience is mostly women aged 18-35, based in India and the U.S., and I have an engagement rate of 6%. I'd love to create Instagram Reels showing my skincare routine.",
+      text: "Thank you so much! My audience is mostly women aged 18-35, based in India and the U.S., and I have an engagement rate of 6%. I'd love to create Instagram Reels showing my skincare routine with your products, focusing on [product 1] and [product 2]. I could also do a dedicated Instagram post and some stories.",
       sender: "user",
       time: "10:20 AM",
     },
     {
       id: 4,
-      text: "That sounds fantastic! We'd love to see a draft of your content plan. Can you send us a proposal?",
+      text: "That sounds fantastic! We're particularly interested in the Reels idea. We'd love to see a draft of your content plan with some potential storylines and visuals. Could you also include your usual rates for this type of content?",
       sender: "platform",
       time: "10:25 AM",
     },
     {
       id: 5,
-      text: "Absolutely! I'll send over a proposal by the end of the day. Looking forward to working together!",
+      text: "Absolutely! I'll put together a detailed proposal with all that information and send it over by the end of the day.  ✨",
       sender: "user",
       time: "10:30 AM",
     },
@@ -53,7 +53,49 @@ export default function ChatConversation({ userId }: any) {
       text: "Great! We'll review it and get back to you soon. Thanks, Krishangi!",
       sender: "platform",
       time: "10:35 AM",
-    }
+    },
+    {
+      id: 7,
+      text: "Hi [Platform Name], just wanted to follow up on the collaboration proposal I sent over yesterday.  Did you have a chance to review it?",
+      sender: "user",
+      time: "11:45 AM (next day)", 
+    },
+    {
+      id: 8,
+      text: "Hi Krishangi, we did! We love your ideas, especially the Reel concept with the focus on [product 1] and the storyline about [mention a specific idea from the proposal]. We have a couple of questions about the proposed timeline and deliverables. Could we schedule a quick call to discuss?",
+      sender: "platform",
+      time: "12:00 PM (next day)",
+    },
+    {
+      id: 9,
+      text: "That's awesome!  Sure, I'm available for a call tomorrow afternoon. How does 2:00 PM work for you?  I'm happy to answer any questions you have.",
+      sender: "user",
+      time: "12:05 PM (next day)",
+    },
+    {
+      id: 10,
+      text: "Perfect, 2:00 PM tomorrow it is! We'll send you a calendar invite. Talk soon!",
+      sender: "platform",
+      time: "12:10 PM (next day)",
+    },
+    {
+      id: 11,
+      text: "Hi Krishangi, following up on our call yesterday, we're excited to move forward with the collaboration! We've sent over a contract with the finalized details. Please review and sign it at your earliest convenience. 😊",
+      sender: "platform",
+      time: "10:00 AM (two days later)",
+    },
+    {
+      id: 12,
+      text: "That's fantastic news! 🎉 I'm so excited to work with you. I'll review the contract and get it back to you today.",
+      sender: "user",
+      time: "10:15 AM (two days later)",
+    },
+    {
+      id: 13,
+      text: "Wonderful! We're looking forward to seeing the amazing content you create! ✨",
+      sender: "platform",
+      time: "10:20 AM (two days later)",
+    },
   ];
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [newMessage, setNewMessage] = useState("");

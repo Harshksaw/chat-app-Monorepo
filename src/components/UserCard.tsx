@@ -13,7 +13,7 @@ function UserCard({ data}) {
         transition-colors duration-200 ${isSelected ? 'bg-[#525252]' : 'bg-[#1E1E1E]'}`} 
       onClick={handleClick}
     >
-    <div className="border-b border-[#326C6D] w-full flex items-center p-6  mx-6">
+    <div className="border-b border-[#326C6D] w-full flex items-center p-6  mx-2">
         <div className="w-16 h-12 bg-gray-200 rounded-full mr-6">
           {/* <img 
             src={data?.image} 
