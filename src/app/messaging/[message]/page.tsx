@@ -45,7 +45,7 @@ export default  function MessagePage({ params }: PageProps) {
 
   return (
     <div className="h-full w-full  flex border-[#229799] border-l">
-      <div className="w-1/3 h-full bg-[#1E1E1E]">
+      <div className="w-2/6 h-full bg-[#1E1E1E]">
 
       <h3 className="text-white font-bold text-3xl m-8">
         Messages
@@ -78,7 +78,7 @@ export default  function MessagePage({ params }: PageProps) {
       </ul>
       </div>
 
-      <div className="w-2/3 h-full max-h-full ">
+      <div className=" w-4/5 h-full max-h-full flex overflow scrollbar-hide">
       <ChatConversation userId={selectedUserId}
       
       />
