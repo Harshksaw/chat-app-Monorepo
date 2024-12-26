@@ -44,7 +44,7 @@ export default  function MessagePage({ params }: PageProps) {
   const users = platformUsers[platform] || [];
 
   return (
-    <div className="h-full w-full bg-green-300 flex border-[#229799] border-l">
+    <div className="h-full w-full  flex border-[#229799] border-l">
       <div className="w-1/3 h-full bg-[#1E1E1E]">
 
       <h3 className="text-white font-bold text-3xl m-8">
@@ -78,7 +78,7 @@ export default  function MessagePage({ params }: PageProps) {
       </ul>
       </div>
 
-      <div className="w-2/3 h-full bg-green-500">
+      <div className="w-2/3 h-full max-h-full ">
       <ChatConversation userId={selectedUserId}
       
       />

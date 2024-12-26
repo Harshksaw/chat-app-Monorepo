@@ -1,9 +1,9 @@
 // app/messages/[platform]/[userId]/page.tsx
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { notFound } from 'next/navigation';
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { notFound } from "next/navigation";
 
 interface Message {
   id: number;
@@ -12,10 +12,10 @@ interface Message {
   timestamp: string;
 }
 
-export default function ChatConversation({userId}:any) {
+export default function ChatConversation({ userId }: any) {
   const searchParams = useSearchParams();
-  const platform = searchParams.get('message');
-  console.log("🚀 ~ ChatConversation ~ platform:", platform, "--", userId)
+  const platform = searchParams.get("message");
+  console.log("🚀 ~ ChatConversation ~ platform:", platform, "--", userId);
 
   const initialMessages: Message[] = [
     {
@@ -44,11 +44,8 @@ export default function ChatConversation({userId}:any) {
     },
   ];
   const [messages, setMessages] = useState<Message[]>(initialMessages);
-  const [newMessage, setNewMessage] = useState('');
+  const [newMessage, setNewMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-
-
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -61,10 +58,10 @@ export default function ChatConversation({userId}:any) {
       try {
         const response = await fetch(`/api/messages/${platform}/${userId}`); // Replace with your API endpoint
         const data = await response.json();
-        console.log("🚀 ~ fetchMessages ~ data:", data)
+        console.log("🚀 ~ fetchMessages ~ data:", data);
         setMessages(data);
       } catch (error) {
-        console.error('Error fetching messages:', error);
+        console.error("Error fetching messages:", error);
       } finally {
         setIsLoading(false);
       }
@@ -75,7 +72,7 @@ export default function ChatConversation({userId}:any) {
 
   const handleSendMessage = async () => {
     // TODO: Send the new message to your API
-    console.log('Sending message:', newMessage);
+    console.log("Sending message:", newMessage);
 
     // Update the messages state with the new message (optimistic update)
     setMessages([
@@ -87,72 +84,95 @@ export default function ChatConversation({userId}:any) {
         timestamp: new Date().toISOString(),
       },
     ]);
-    setNewMessage('');
+    setNewMessage("");
   };
 
   return (
-    <div className="chat-conversation h-full flex flex-col">
-      <div className="chat-header p-4 bg-gray-800 text-white flex items-center">
-        {/* Replace with actual user details */}
-        <div className="w-8 h-8 rounded-full bg-gray-700 mr-2"></div> 
-        <h2 className="text-lg font-medium">User {userId}</h2>
-      </div>
-      <div className="chat-messages overflow-y-auto flex-1 p-4">
-        {isLoading ? (
-          <p>Loading messages...</p>
-        ) : (
-          <ul>
-             <div className="flex-1 overflow-y-auto space-y-4">
-        {messages.map((msg) => (
-          <MessageBubble key={msg.id} message={msg} />
-        ))}
-      </div>
-          </ul>
-        )}
-      </div>
-      <div className="chat-input p-4 bg-gray-200">
-        <div className="flex">
-          <input
-            type="text"
-            placeholder="Type your message..."
-            className="flex-1 mr-2 p-2 rounded-lg border border-gray-400"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-          />
-          <button
-            className="bg-blue-500 text-white p-2 rounded-lg"
-            onClick={handleSendMessage}
-          >
-            Send
-          </button>
+<div className="flex flex-col h-[90vh] bg-red-300">
+  <div className="chat-conversation flex-1 bg-[#3D3D3D] flex flex-col">
+    <div className="chat-header p-4 text-white flex items-center">
+      <div className="w-8 h-8 rounded-full bg-[#3D3D3D] mr-2"></div>
+      <h1 className="text-lg font-medium">User {userId}</h1>
+    </div>
+    <div className="  overflow-y-auto flex-1 p-4 mt-2 ">
+      {isLoading ? (
+        <p>Loading messages...</p>
+      ) : (
+        <div className="flex-1 overflow-y-auto  space-y-4">
+          {messages.map((msg) => (
+            <MessageBubble key={msg.id} message={msg} />
+          ))}
         </div>
+      )}
+    </div>
+    <div className="chat-input p-2 bg-inherit">
+      <div className="flex">
+        <input
+          type="text"
+          placeholder="Type your message..."
+          className="flex-1 mr-2 p-2 rounded-lg border border-gray-400"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+        />
+        <button
+          className="bg-blue-500 text-white p-2 rounded-lg"
+          onClick={handleSendMessage}
+        >
+          Send
+        </button>
       </div>
     </div>
+  </div>
+</div>
   );
 }
 
 interface MessageProps {
-    message: {
-      text: string;
-      sender: "user" | "platform";
-      time: string;
-    };
-  }
-  
-  const MessageBubble = ({ message }: MessageProps) => {
-    const isUser = message.sender === "user";
-  
-    return (
-      <div className={`flex ${isUser ? "justify-start" : "justify-end"}`}>
-        <div
-          className={`max-w-[75%] p-3 rounded-lg shadow-md ${
-            isUser ? "bg-blue-500 text-white" : "bg-gray-700 text-white"
-          }`}
-        >
-          <p>{message.text}</p>
-          <div className="text-sm text-gray-300 mt-1 text-right">{message.time}</div>
-        </div>
-      </div>
-    );
+  message: {
+    text: string;
+    sender: "user" | "platform";
+    time: string;
   };
-  
+}
+
+const MessageBubble = ({ message }: MessageProps) => {
+  const isUser = message.sender === "user";
+  return (
+    <div className={`flex ${isUser ? "justify-start" : "justify-end"}`}>
+      {isUser && <div className="w-8 h-8 rounded-full bg-white mr-2"></div>}
+      <div className="max-w-[60%] flex-col flex">
+
+      
+      <div
+      className={` p-3 rounded-lg shadow-md ${
+        isUser ? "bg-blue-500 text-white" : "bg-gray-700 text-white"
+      }`}
+      style={{
+        color: "#FFF",
+        fontFamily: "Montserrat",
+        fontSize: "20px",
+        fontStyle: "normal",
+        fontWeight: 500,
+        lineHeight: "normal",
+      }}
+      >
+      <p>{message.text}</p>
+
+    </div>
+    <div
+      className={` text-sm text-gray-300 mt-1 ${
+      isUser ? "text-left" : "text-right"
+      }`}
+    >
+      {message.time}
+    </div>
+    </div>
+
+    </div>
+
+
+
+
+
+  );
+};

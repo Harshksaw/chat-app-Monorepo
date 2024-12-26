@@ -6,7 +6,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <div className="message-area flex flex-col w-full">
+    <div className="message-area flex flex-col w-full h-[10vh]">
       <div className="message-header bg-[#424242] text-white p-4 flex justify-between items-center">
         <div>
           <div className="flex items-center">
@@ -16,7 +16,7 @@ const Navbar = (props: Props) => {
             <h2 className=" social-links  text-6xl">Soc</h2>
           </div>
         </div>
-        <div className=" h-14 flex items-center bg-[#5C5C5C]  px-4 py-2 rounded  md:w-[40vw] lg: w-[50rem] lg:w-[60rem]">
+        <div className=" h-10 rounded-lg flex items-center bg-[#5C5C5C]  px-4 py-2  md:w-[40vw] lg: w-[50rem] lg:w-[60rem]">
           <Image
             // ref={"../../../public/Icons/search.png"}
             src="/Icons/search.png"
