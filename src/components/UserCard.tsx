@@ -9,20 +9,31 @@ function UserCard({ data}) {
 
   return (
     <div 
-      className={`card relative  flex  items-center  rounded-lg p-4 cursor-pointer
-         transition-colors duration-200 ${isSelected ? 'bg-[#525252]' : 'bg-[#1E1E1E]'}`} 
+    className={`card relative flex items-center rounded-lg  cursor-pointer shadow-lg 
+        transition-colors duration-200 ${isSelected ? 'bg-[#525252]' : 'bg-[#1E1E1E]'}`} 
       onClick={handleClick}
     >
-      <div className=" w-8 h-8  bg-gray-200 rounded-full mr-10">
-        {/* <img 
-          src={data?.image} 
-          alt="UserCard Image" 
-          className="w-full h-full object-cover" 
-        /> */}
-      </div>
-      <div className="card-content text-left">
-        <h3 className="font-bold text-xl">{data.name}</h3>
-        <p className="text-white text-md">{data.text.slice(0,15)}</p>
+    <div className="border-b border-[#326C6D] w-full flex items-center p-6  mx-6">
+        <div className="w-16 h-12 bg-gray-200 rounded-full mr-6">
+          {/* <img 
+            src={data?.image} 
+            alt="UserCard Image" 
+            className="w-full h-full object-cover" 
+          /> */}
+        </div>
+        <div className="card-content text-left flex justify-between w-full">
+
+            <div>
+
+            <h3 className="font-bold text-xl">{data.name}</h3>
+            <p className="text-white text-md">{data.text.slice(0, 15)}</p>
+            </div>
+            <div>
+            <p className="text-white text-sm">{data.time}</p>
+            </div>
+        
+      
+        </div>
       </div>
     </div>
   );

@@ -18,10 +18,10 @@ export default  function MessagePage({ params }: PageProps) {
 
   const platformUsers = {
     twitter: [
-      { id: 1, name: 'Alice', username: '@alice123', text:'helloe leloeo leoeo' },
-      { id: 2, name: 'Bob', username: '@bob456', text:'helloe leloeoewwe wewewdcs leoeo'  },
-      { id: 3, name: 'Bo3b', username: '@bobew456', text:'helloe leloeoweewwe wewewdcs leoeo'  },
-      { id: 4, name: 'B2ob', username: '@boweb456', text:'helloe leloeoewweewwe wewewdcs leoeo'  },
+      { id: 1, name: 'Alice', username: '@alice123', text:'helloe leloeo leoeo' , time : '08 Dec 24'},
+      { id: 2, name: 'Bob', username: '@bob456', text:'helloe leloeoewwe wewewdcs leoeo' , time : '08 Dec 24' },
+      { id: 3, name: 'Bo3b', username: '@bobew456', text:'helloe leloeoweewwe wewewdcs leoeo' , time : '08 Dec 24' },
+      { id: 4, name: 'B2ob', username: '@boweb456', text:'helloe leloeoewweewwe wewewdcs leoeo' , time : '08 Dec 24' },
     ],
     linkedin: [
       { id: 3, name: 'Charlie', title: 'Software Engineer' },
@@ -53,7 +53,7 @@ export default  function MessagePage({ params }: PageProps) {
 
       <ul className=" p-0">
         {users.map((user) => (
-          <li key={user.id} className="p-0 border-b border-[#326C6D]   rounded-sm shadow-md bg-inherit text-white"
+          <li key={user.id} className="   rounded-sm shadow-md bg-inherit text-white"
           onClick={() => {
             setSelectedUserId(user.id);
           }}
