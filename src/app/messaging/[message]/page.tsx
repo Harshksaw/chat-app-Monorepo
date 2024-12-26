@@ -76,7 +76,7 @@ export default function MessagePage({ params }: PageProps) {
 
   return (
     <div className="h-full w-full  flex border-[#229799] border-l">
-      <div className="w-2/6 h-full bg-[#1E1E1E] overflow-y-auto scrollbar-hide">
+      <div className="w-2/6 h-full bg-[#3D3D3D] overflow-y-auto scrollbar-hide">
 
         <h3 className="text-white font-bold text-3xl m-8">
           Messages
@@ -84,7 +84,7 @@ export default function MessagePage({ params }: PageProps) {
 
         <ul className="  ">
           {users.map((user) => (
-            <li key={user.id} className="    shadow-md bg-inherit text-white"
+            <li key={user.id} className="  shadow-md bg-inherit text-white"
               onClick={() => {
                 setSelectedUserId(user.id);
               }}
@@ -109,16 +109,11 @@ export default function MessagePage({ params }: PageProps) {
         </ul>
       </div>
 
-      <div className=" w-4/5 h-full max-h-full flex overflow scrollbar-hide">
+      <div className=" w-4/5 h-full max-h-full flex overflow scrollbar-hide border-l border-[#229799]">
         <ChatConversation userId={selectedUserId}
 
         />
-        {/* {selectedUserId && (
-          <div className="p-4">
-            <h2 className="text-2xl font-bold">Messages</h2>
-            <p>Selected user ID: {selectedUserId}</p>
-          </div>
-        )} */}
+   
       </div>
 
     </div>

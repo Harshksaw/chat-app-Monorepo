@@ -10,7 +10,7 @@ function UserCard({ data}) {
   return (
     <div 
     className={`card relative flex items-center rounded-lg  cursor-pointer shadow-lg 
-        transition-colors duration-200 ${isSelected ? 'bg-[#525252]' : 'bg-[#1E1E1E]'}`} 
+        transition-colors duration-200 ${isSelected ? 'bg-[#525252]' : 'bg-[#3D3D3D]'}`} 
       onClick={handleClick}
     >
     <div className="border-b border-[#326C6D] w-full flex items-center p-6  mx-2">

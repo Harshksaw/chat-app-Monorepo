@@ -7,7 +7,7 @@ type Props = {};
 const Navbar = (props: Props) => {
   return (
     <div className="message-area flex flex-col w-full h-[10vh]">
-      <div className="message-header bg-[#424242] text-white p-4 flex justify-between items-center">
+      <div className="message-header bg-[#424242] text-white p-1 flex justify-between items-center">
         <div>
           <div className="flex items-center">
             <span className="text-3xl font-extralight text-[#48CFCB] ">

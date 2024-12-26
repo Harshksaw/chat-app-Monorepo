@@ -47,7 +47,7 @@ function Sidebar({ conversations, onSelectConversation, onSelectUser, onSelectPl
 
   return (
     <main className='w-fit h-full flex '>
-    <div className="sidebar w-20 bg-gray-900 text-white p-4">
+    <div className="sidebar w-20 bg-[#3D3D3D] text-white p-4">
     <div className="sidebar-tabs flex flex-col items-center justify-around space-y-10">
 
       <button
