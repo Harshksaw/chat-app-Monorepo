@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 interface Message {
   id: number;
@@ -58,7 +59,7 @@ export default function ChatConversation({ userId }: any) {
       id: 7,
       text: "Hi [Platform Name], just wanted to follow up on the collaboration proposal I sent over yesterday.  Did you have a chance to review it?",
       sender: "user",
-      time: "11:45 AM (next day)", 
+      time: "11:45 AM (next day)",
     },
     {
       id: 8,
@@ -109,16 +110,16 @@ export default function ChatConversation({ userId }: any) {
       }
 
       setIsLoading(true);
-      try {
-        const response = await fetch(`/api/messages/${platform}/${userId}`); // Replace with your API endpoint
-        const data = await response.json();
-        console.log("🚀 ~ fetchMessages ~ data:", data);
-        setMessages(data);
-      } catch (error) {
-        console.error("Error fetching messages:", error);
-      } finally {
-        setIsLoading(false);
-      }
+      // try {
+      //   const response = await fetch(`/api/messages/${platform}/${userId}`); // Replace with your API endpoint
+      //   const data = await response.json();
+      //   console.log("🚀 ~ fetchMessages ~ data:", data);
+      //   setMessages(data);
+      // } catch (error) {
+      //   console.error("Error fetching messages:", error);
+      // } finally {
+      //   setIsLoading(false);
+      // }
     };
 
     fetchMessages();
@@ -161,8 +162,58 @@ export default function ChatConversation({ userId }: any) {
             </div>
           )}
         </div>
-        <div className="chat-input p-2 bg-inherit absolute bottom-0 w-[55vw] mx-10">
+        <div className="chat-input p-2 bg-inherit absolute bottom-0 w-[60vw] mx-5">
+          <div className="flex items-center gap-4">
+
+            <div className="flex flex-grow bg-[#5A5A5A] items-center p-1  rounded-lg">
+
+              <Image
+                src="/Icons/laughing.png"  // Assuming you have an emoji icon
+                width={30}
+                height={30}
+                alt="emoji"
+                className="w-6 h-6 mr-4 ml-2"
+              />
+              <input
+                type="text"
+                placeholder="Message..."
+                className="flex-grow mr-2 px-2 rounded-lg  bg-[#5A5A5A] text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+              />
+                 <Image
+                src="/Icons/paperclip.png"  // Assuming you have an emoji icon
+                width={30}
+                height={30}
+                alt="emoji"
+                className="w-8 h-8 mr-2"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-[#48CFCB] hover:bg-blue-600 rounded-full text-white p-2  transition-colors duration-200"
+              onClick={handleSendMessage}
+            >
+              <Image
+                src="/Icons/send.png"  // Assuming you have a send icon
+                width={30}
+                height={30}
+                alt="send"
+                className="w-6 h-6"
+              />
+            </button>
+          </div>
+        </div>
+        {/* <div className="chat-input p-2 bg-inherit absolute bottom-0 w-[55vw] mx-10">
           <div className="flex">
+
+            <Image
+              src="/Icons/emoji.png"
+              width={30}
+              height={30}
+              alt="emoji"
+              className="w-6 h-6 mr-2"
+              />
 
             <input
               type="text"
@@ -178,7 +229,7 @@ export default function ChatConversation({ userId }: any) {
               Send
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -196,32 +247,30 @@ const MessageBubble = ({ message }: MessageProps) => {
   const isUser = message.sender === "user";
   return (
     <div className={` flex ${isUser ? "justify-start" : "justify-end"}`}>
-      
+
       <div className="max-w-[60%] flex-col flex mx-2">
 
         <div className={` flex  gap-2  ${isUser ? "flex-row" : "flex-row-reverse"}`}>
 
-        <div className="w-14 h-10 rounded-full bg-white p-4  "></div>
-        <div
-          className={`p-3 rounded-lg shadow-md ${
-            isUser ? "bg-blue-500 text-white" : "bg-gray-700 text-white"
-          }`}
-        >
-          <p className="text-white font-montserrat text-lg font-medium leading-normal">
-            {message.text}
-          </p>
-        </div>
+          <div className="w-14 h-10 rounded-full bg-white p-4  "></div>
+          <div
+            className={`p-3 rounded-lg shadow-md ${isUser ? "bg-blue-500 text-white" : "bg-gray-700 text-white"
+              }`}
+          >
+            <p className="text-white font-montserrat text-lg font-medium leading-normal">
+              {message.text}
+            </p>
+          </div>
 
         </div>
 
         <div
-          className={` text-sm text-gray-300 mt-1 ${
-            isUser ? "text-left ml-12" : "text-right mr-12"
-          }`}
+          className={` text-sm text-gray-300 mt-1 ${isUser ? "text-left ml-12" : "text-right mr-12"
+            }`}
         >
           {message.time}
         </div>
-        
+
       </div>
     </div>
   );
