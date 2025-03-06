@@ -1,9 +1,12 @@
 
 interface TextInputProps{
     placeholder: string;
+    size : "small" | "medium" | "large";
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export function TextInput({
-    placeholder
+    placeholder,
+    size, onChange
 }: TextInputProps) {
  
     return(
@@ -11,7 +14,7 @@ export function TextInput({
             type="text" 
             placeholder={placeholder}
     style={{
-                padding: "10px",
+                padding: : size ==="bug"? 20 : 10,
                 margin: "10px",
                 fontSize: "16px",
                 borderRadius: "5px",
